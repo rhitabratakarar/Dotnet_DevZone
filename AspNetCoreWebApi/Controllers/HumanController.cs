@@ -47,5 +47,17 @@ namespace AspNetCoreWebApi.Controllers
             this._context.SaveChanges();
             return Ok();
         }
+
+        [HttpPut]
+        [Route("update/{id}")]
+        public IActionResult UpdateExistingUser([FromRoute]int id, [FromBody]HumanDTO updatedHumanInformation)
+        {
+            Human humanToUpdate = this._context.Humans.Single<Human>(h => h.Id == id);
+            humanToUpdate.Name = updatedHumanInformation.Name;
+            humanToUpdate.Age = updatedHumanInformation.Age;
+            humanToUpdate.BirthPlace = updatedHumanInformation.BirthPlace;
+            this._context.SaveChanges();
+            return Ok();
+        }
     }
 }
