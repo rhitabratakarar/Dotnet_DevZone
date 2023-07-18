@@ -36,5 +36,16 @@ namespace AspNetCoreWebApi.Controllers
 
             return Ok();
         }
+
+        [HttpDelete]
+        [Route("delete")]
+        public IActionResult DeleteExistingHuman(HumanIdDto humanIdDTO)
+        {
+            int id = humanIdDTO.Id;
+            Human humanToRemove = this._context.Humans.Single<Human>(h => h.Id == id);
+            this._context.Remove(humanToRemove);
+            this._context.SaveChanges();
+            return Ok();
+        }
     }
 }
