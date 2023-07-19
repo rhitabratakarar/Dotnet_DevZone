@@ -5,7 +5,7 @@
 
 /* In dependency injection, there are three entities
  * 
- * Client - The first entity is the client which wants a service (Here IClient and Client) are the respective entities
+ * Client - The first entity is the client which wants a service. Here IClient and Client are the respective entities
  * representing the client entity.
  * 
  * Service - The second entity that provides a service to the requestor (Here IService and Service).
