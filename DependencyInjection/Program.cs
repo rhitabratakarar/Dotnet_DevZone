@@ -2,6 +2,37 @@
 
 // This is the dependency injector.
 
+/* Why dependency injection?
+ * 
+ * Traditionally, we create two concrete classes and call one from the other directly. For eg:
+ * 
+ * From class A:
+ * ClassB objectB = new ClassB(); // calling ClassB directly.
+ * 
+ * This approach creates "tightly coupled code", which is harder to maintain and harder to extend.
+ * 
+ * The fix? *Enters Dependency Injection design pattern*
+ * 
+ * This design pattern is popularly implemented by a lot of modern frameworks, one of them is ASP.NET core
+ * 
+ * The approach is pretty simple, a class will not directly call another class, instead the "to be called class" 
+ * will be injected by any injector. This approach creates your code low coupled which is much better to extend
+ * and maintain as well.
+ * 
+ * The approach looks like this,
+ * 
+ * (here Service is implementing IService interface.)
+ * IService serviceToInject = new Service(); 
+ * 
+ * (the Client is implementing IClient interface.)
+ * (the Client class has a constructor that is taking an IService serviceToInject parameter.)
+ * (this is the dependency injection through constructor pattern)
+ * IClient clientThatWantsService = new Client(serviceToInject); 
+ * 
+ * (call the client method that is implemented by Client class from IClient)
+ * clientThatWantsService.ConsumeInjectedService();
+ */
+
 
 /* In dependency injection, there are three entities
  * 
