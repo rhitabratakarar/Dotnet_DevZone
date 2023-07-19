@@ -27,7 +27,7 @@
  * IService serviceToInject = new Service();
  * This is the dependency inversion principle (depend on the abstraction(interface) instead of concretion(class))
  * 
- * Simillarly, in the 'Client' constructor, "IService serviceToInject" is used instead of "Service".
+ * Simillarly, in the 'Client' constructor, "IService serviceToInject" is used instead of "Service serviceToInject".
  * 
  * This dependency inversion principle is an enabler to the dependency injection principle.
  * 
