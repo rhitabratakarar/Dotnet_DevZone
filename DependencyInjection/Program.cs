@@ -1,6 +1,6 @@
 ﻿using DependencyInjection;
 
-// This is the dependency injector.
+// This is the DI Container (to know, read the comment below).
 
 /* Why Dependency Injection?
  * 
