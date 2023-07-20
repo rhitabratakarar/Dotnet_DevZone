@@ -45,6 +45,7 @@
  * (Call the client method that is implemented by the "Client" class from "IClient")
  * clientThatWantsService.ConsumeInjectedService();
  *
+ *
  * Things to note: 
  * 
  * The Dependency Inversion Principle (DIP) is an enabler of the Dependency Injection principle.
@@ -53,6 +54,20 @@
  * on abstractions (interfaces or abstract classes).
  * 
  * By programming to interfaces, you can easily switch implementations without modifying the client code.
+ * 
+ * 
+ * Key Points:
+ * 
+ * DI is a design pattern that decouples the client code from the service implementation.
+ * 
+ * This makes the code more maintainable and extensible.
+ * 
+ * The DI container is responsible for injecting the dependency into the client code.
+ * 
+ * The DI container can be implemented in various ways, such as using an interface or an abstract class.
+ * 
+ * DI is a popular design pattern that is used in many modern frameworks
+ * 
  * 
  * The design pattern can be considered as follows:
  * 
