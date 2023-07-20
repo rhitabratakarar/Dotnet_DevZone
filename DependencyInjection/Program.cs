@@ -2,59 +2,52 @@
 
 // This is the dependency injector.
 
-/* Why dependency injection?
+/* Why Dependency Injection?
  * 
- * Traditionally, we create two concrete classes and call one from the other directly. For eg:
+ * Traditionally, we created tightly coupled code by directly creating concrete instances of classes within other classes. For example:
  * 
- * From class A:
+ * In class A:
  * ClassB objectB = new ClassB(); // calling ClassB directly.
  * 
- * This approach creates "tightly coupled code", which is harder to maintain and harder to extend.
+ * This approach makes the code harder to maintain and extend. If you modify one section of the code, there's a high possibility of breaking the existing codebase.
  * 
- * The fix? *Enters Dependency Injection design pattern*
+ * The solution? *Enter the Dependency Injection (DI) design pattern.*
  * 
- * In dependency injection, there are three entities
+ * In dependency injection, there are three entities:
  * 
- * Client - The first entity is the client which wants a service. Here IClient and Client are the respective entities
- * representing the client entity.
+ * Client - The first entity is the client, which requires a service. Here, IClient and Client are the respective entities representing the client entity.
  * 
- * Service - The second entity that provides a service to the requestor (Here IService and Service).
+ * Service - The second entity is the service that provides functionality to the client (e.g., IService and Service).
  * 
- * Injector - The last entity is the injector, which is this file that is going to inject the dependency(Service)
- * through construction dependency injection pattern.
+ * Container (or DI Container) - The last entity is the container, which is responsible for injecting the dependency (Service) through constructor dependency injection pattern.
  * 
- * This design pattern is popularly implemented by a lot of modern frameworks, one of them is ASP.NET core
+ * This design pattern is popularly implemented by many modern frameworks, including ASP.NET Core, but it's not limited to any specific framework.
  * 
- * The approach is pretty simple, a class will not directly call another class, instead the "to be called class" 
- * will be injected by any injector. This approach creates your code low coupled which is much better to extend
- * and maintain as well.
+ * The approach is simple: a class should not directly create instances of another class it depends on; instead, the "to-be-used class" is injected by the container. This creates low coupled code that is easier to extend and maintain.
  * 
- * The approach looks like this,
+ * The approach looks like this:
  * 
  * (here Service is implementing IService interface.)
  * IService serviceToInject = new Service(); 
  * 
- * (the Client is implementing IClient interface.)
- * (the Client class has a constructor that is taking an IService serviceToInject parameter.)
- * (this is the dependency injection through constructor pattern)
+ * (The Client is implementing IClient interface and has a constructor taking an IService serviceToInject parameter.)
+ * (This is constructor dependency injection.)
  * IClient clientThatWantsService = new Client(serviceToInject); 
  * 
- * (call the client method that is implemented by Client class from IClient)
+ * (Call the client method that is implemented by the Client class from IClient)
  * clientThatWantsService.ConsumeInjectedService();
  *
- * This dependency inversion principle is an enabler to the dependency injection principle.
+ * Things to note: 
  * 
- * The reason is pretty simple, suppose there is another service, like 'MyCustomService', which is implementing
- * the IService interface, then the members related to the interface has to be present inside the class right? 
- * And for this reason, it will allow us to inject the 'MyCustomService' class object to the Client class 
- * constructor, thus it is not limiting it to the 'Service' class only.
+ * The Dependency Inversion Principle (DIP) is an enabler of the Dependency Injection principle.
  * 
- * The design pattern can be considered like this,
+ * DIP states that high-level modules/classes should not depend on low-level modules/classes directly. Instead, both should depend on abstractions (interfaces or abstract classes).
  * 
- * There is a class that has a job to perform and for that it needs a service, thus an abstraction of that 
- * service is required through its constructor (constructor dependency injection). Now once the class achieves
- * the service, it can do computation with that service. Instead of directly instantiating the service by itself,
- * it chose to do it by someone else (the caller of the client, the injector).
+ * By programming to interfaces, you can easily switch implementations without modifying the client code.
+ * 
+ * The design pattern can be considered as follows:
+ * 
+ * There is a class that has a job to perform and requires a service for that. An abstraction of that service is required through its constructor (constructor dependency injection). Once the class receives the service, it can perform computations with it. Instead of instantiating the service by itself, it delegates this responsibility to someone else (the DI container).
  */
 
 
