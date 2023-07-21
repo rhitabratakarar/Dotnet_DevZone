@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebApi", "AspNetC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWriterService", "FileWriterService\FileWriterService.csproj", "{F255F77D-587B-4384-A622-121804D60149}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asynchronous", "Asynchronous\Asynchronous.csproj", "{7FC2B262-B6D9-469F-B3BE-6727397F06C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asynchronous", "Asynchronous\Asynchronous.csproj", "{7FC2B262-B6D9-469F-B3BE-6727397F06C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{5F3FAA94-EA0A-46EA-AC8A-A5B00DCC8853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{5F3FAA94-EA0A-46EA-AC8A-A5B00DCC8853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagementSystem", "InventoryManagementSystem\InventoryManagementSystem.csproj", "{FED5A2D1-A65E-40A8-9668-B5AC52A47641}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{5F3FAA94-EA0A-46EA-AC8A-A5B00DCC8853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3FAA94-EA0A-46EA-AC8A-A5B00DCC8853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3FAA94-EA0A-46EA-AC8A-A5B00DCC8853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED5A2D1-A65E-40A8-9668-B5AC52A47641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED5A2D1-A65E-40A8-9668-B5AC52A47641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED5A2D1-A65E-40A8-9668-B5AC52A47641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED5A2D1-A65E-40A8-9668-B5AC52A47641}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
