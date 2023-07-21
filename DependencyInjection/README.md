@@ -13,6 +13,11 @@ of breaking the existing codebase.
 
 **The solution?** *Enter the Dependency Injection (DI) design pattern.*
 
+The approach is simple: a class should not directly create instances of another class it depends on; instead, the "to-be-used class" 
+is injected by the DI container. This creates low coupled code that is easier to extend and maintain.
+
+This design pattern is popularly implemented by many modern frameworks, including ASP.NET Core, but it's not limited to any specific framework.
+
 In dependency injection, there are three entities:
 
 1. Client (Client.cs) - The first entity is the client, which requires a service. Here, "IClient" is an interface representing the client entity, 
@@ -24,11 +29,6 @@ representing the service, and "Service" is a class implementing the "IService" i
 3. Container (DI Container) (Program.cs) - The last entity is the container, which is responsible for injecting the dependency (Service) 
 through constructor dependency injection pattern. The DI container is a part of a DI framework and provides a centralized 
 way to manage dependencies and their lifetimes throughout the application.
-
-This design pattern is popularly implemented by many modern frameworks, including ASP.NET Core, but it's not limited to any specific framework.
-
-The approach is simple: a class should not directly create instances of another class it depends on; instead, the "to-be-used class" 
-is injected by the DI container. This creates low coupled code that is easier to extend and maintain.
 
 #### The approach looks like this:
 
