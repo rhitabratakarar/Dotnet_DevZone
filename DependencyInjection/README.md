@@ -30,6 +30,7 @@ representing the service, and "Service" is a class implementing the "IService" i
 through constructor dependency injection pattern. The DI container is a part of a DI framework and provides a centralized 
 way to manage dependencies and their lifetimes throughout the application.
 
+
 #### The approach looks like this:
 
 	// Here, "Service" is implementing "IService" interface.
@@ -65,7 +66,8 @@ By programming to interfaces, you can easily switch implementations without modi
 
 5. DI is a popular design pattern that is used in many modern frameworks
 
-The design pattern can be considered as follows:
+
+## The design pattern can be considered as follows:
 
 There is a class that has a job to perform and requires a service for that. An abstraction of that service is required through 
 its constructor (constructor dependency injection). Once the class receives the service, it can perform computations with it. 
