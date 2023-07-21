@@ -4,9 +4,9 @@ Traditionally, we created tightly coupled code by directly creating concrete ins
 
 For example:
  
-		In class A:
+	In class A:
 
-		ClassB objectB = new ClassB(); // calling ClassB directly.
+	ClassB objectB = new ClassB(); // calling ClassB directly.
 
 This approach makes the code harder to maintain and extend. If you modify one section of the code, there's a high possibility 
 of breaking the existing codebase.
