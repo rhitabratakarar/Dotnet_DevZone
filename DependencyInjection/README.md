@@ -86,3 +86,5 @@ where IService is the Interface that Service class is implementing. (Reason: Dep
 declaring object. (IClient client = new Client() instead of Client client = new Client())
 
 4. Now develop the Interface, IService and IClient respectively in a new namespace.
+
+5. Once done, you can use the service inside the client.
