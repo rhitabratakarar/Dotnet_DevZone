@@ -32,15 +32,15 @@ way to manage dependencies and their lifetimes throughout the application.
 
 #### The approach looks like this:
 
-(Here, "Service" is implementing "IService" interface.)
-IService serviceToInject = new Service(); 
+	// Here, "Service" is implementing "IService" interface.
+	IService serviceToInject = new Service(); 
 
-(The "Client" is implementing "IClient" interface and has a constructor taking an "IService" serviceToInject parameter.)
-(This is constructor dependency injection.)
-IClient clientThatWantsService = new Client(serviceToInject); 
+	// The "Client" is implementing "IClient" interface and has a constructor taking an "IService" serviceToInject parameter.
+	// This is constructor dependency injection.
+	IClient clientThatWantsService = new Client(serviceToInject); 
 
-(Call the client method that is implemented by the "Client" class from "IClient")
-clientThatWantsService.ConsumeInjectedService();
+	// Call the client method that is implemented by the "Client" class from "IClient"
+	clientThatWantsService.ConsumeInjectedService();
 
 
 ## Things to note: 
