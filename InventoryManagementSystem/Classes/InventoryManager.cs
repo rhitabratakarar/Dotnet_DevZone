@@ -24,14 +24,17 @@ namespace InventoryManagementSystem.Classes
 
         public void RemoveInventoryObject(IInventory inventory, IInventoryObject objectToRemove)
         {
-            int indexOfInventory = this.ListOfInventories.IndexOf(inventory);
-            this.ListOfInventories[indexOfInventory].ListOfObjects.Remove(objectToRemove);
+            this._managementService.RemoveFromInventory(inventory, objectToRemove);
         }
 
         public void AddInventoryObject(IInventory inventory, IInventoryObject objectToAdd)
         {
-            int indexOfInventory = this.ListOfInventories.IndexOf(inventory);
-            this.ListOfInventories[indexOfInventory].ListOfObjects.Add(objectToAdd);
+            this._managementService.AddToInventory(inventory, objectToAdd);
+        }
+
+        public void EditInventoryObject(IInventory inventory, IInventoryObject existingObject, IInventoryObject newObject)
+        {
+            this._managementService.EditInventoryObject(inventory, existingObject, newObject);
         }
     }
 }
