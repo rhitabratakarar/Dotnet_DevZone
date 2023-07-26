@@ -15,7 +15,7 @@ namespace Quizzy.Classes
             GenerateQuestionSetDatabase();
         }
 
-        public void GenerateQuestionDatabase()
+        private void GenerateQuestionDatabase()
         {
             IAnswer answer1 = new Answer() { AnswerId = Guid.NewGuid(), AnswerText = "Paris" };
             IAnswer answer2 = new Answer() { AnswerId = Guid.NewGuid(), AnswerText = "London" };
@@ -35,7 +35,7 @@ namespace Quizzy.Classes
                 ValidAnswer = answer1
             });
         }
-        public void GenerateQuestionSetDatabase()
+        private void GenerateQuestionSetDatabase()
         {
             Random random = new();
             IQuestion randomQuestion = this.questionDatabase[random.Next(this.questionDatabase.Count)];
