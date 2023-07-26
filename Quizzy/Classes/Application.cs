@@ -7,7 +7,7 @@ namespace Quizzy.Classes
     {
         private readonly IQuizApplicationService _quizService;
         private readonly IQuizSession _quizSession; 
-        public Application(IQuizApplicationService quizApplicationService, IQuizSession quizSession, )
+        public Application(IQuizApplicationService quizApplicationService, IQuizSession quizSession)
         {
             this._quizService = quizApplicationService;
             this._quizSession = quizSession;
@@ -55,7 +55,7 @@ namespace Quizzy.Classes
                     if (currentQuestion.ValidAnswer.AnswerId == currentQuestion.Options.Options[assumedAnswerIndex].AnswerId)
                         this._quizSession.Score += 1;
                 }
-                Console.WriteLine("Your Score: " + this._quizSession.Score);
+                Console.WriteLine("Your Score: " + this._quizSession.Score + "/" + questionCount);
             }
         }
     }
