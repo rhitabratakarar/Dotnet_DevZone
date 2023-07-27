@@ -41,6 +41,7 @@ namespace Quizzy.Classes
             IQuestion randomQuestion = this.questionDatabase[random.Next(this.questionDatabase.Count)];
             IQuestionSet questionSet = new QuestionSet(new List<IQuestion>() { randomQuestion });
             this.questionSetDatabase.Add(questionSet);
+            this.GeneratedQuestionSet = this.questionSetDatabase[random.Next(this.questionSetDatabase.Count)];
         }
     }
 }

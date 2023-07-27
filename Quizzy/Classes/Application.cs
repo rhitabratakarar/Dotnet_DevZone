@@ -23,7 +23,7 @@ namespace Quizzy.Classes
             {
                 this._quizSession.Initialize();
                 Console.WriteLine("Generating Questions, Please wait..."); ;
-                Thread.Sleep(2);
+                Thread.Sleep(2000);
                 this._quizService.GenerateQuizQuestionSet();
                 int questionCount = 0;
                 if (this._quizService.GeneratedQuestionSet != null)

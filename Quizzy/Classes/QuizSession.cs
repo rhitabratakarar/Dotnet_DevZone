@@ -12,8 +12,21 @@ namespace Quizzy.Classes
         public void Dispose()
         {
             this.EndTime = DateTime.Now;
-            this.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
+            CurrentQuestionIndex = default;
+            Score = default;
+            StartTime = default;
+            EndTime = default;
+        }
+
 
         public void Initialize()
         {
