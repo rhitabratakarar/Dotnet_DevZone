@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+
+<h1>Hello there</h1>
+<span>
+    To create a new cred:
+    <a href="/create">Create</a>
+</span>
+
+<ul>
+    @{
+        foreach (Hooman hooman in Model.ListOfHooman)
+        {
+            <li id="@hooman.Id">
+                @hooman.Name
+                @hooman.AgeInYears
+            </li>
+        }
+    }
+</ul>
