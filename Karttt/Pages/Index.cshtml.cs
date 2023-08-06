@@ -1,20 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Karttt.Interfaces;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Karttt.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly IKartItemGenerator _kartItemGenerator;
+        public IList<IKartItem> GeneratedKartItems { get; set; }
+        public IndexModel(IKartItemGenerator kartItemGenerator)
         {
-            _logger = logger;
+            this._kartItemGenerator = kartItemGenerator;
+            this.GeneratedKartItems = new List<IKartItem>();
         }
 
         public void OnGet()
         {
-
+            for (int i = 0; i < 24; i++)
+            {
+                this.GeneratedKartItems.Add(_kartItemGenerator.GetNewItem());
+            }
         }
     }
 }

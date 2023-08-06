@@ -1,10 +1,28 @@
 ﻿@page
+@using Karttt.Interfaces;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
+<script>
+    function addToCart(fromButton) {
+        console.log(fromButton.id);
+    }
+</script>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="d-flex flex-wrap justify-content-between">
+    @{
+        foreach(IKartItem kartItem in Model.GeneratedKartItems)
+        {
+            <div class="h-25 w-25 m-4 shadow" id="@kartItem.Id">
+                @kartItem.Id
+                <button type="button" class="btn btn-success" onclick="addToCart(this)" id="@(kartItem.Id.ToString() + "_" + kartItem.Id.ToString())">Add</button>
+            </div>
+        }
+    }
 </div>

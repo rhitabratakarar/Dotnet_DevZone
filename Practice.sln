@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilityLibrary", "UtilityLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesApp", "RazorPagesApp\RazorPagesApp.csproj", "{58F4FD7A-1220-4E2D-B1AA-1F80EF44D1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karttt", "Karttt\Karttt.csproj", "{22B17C64-7E2B-4831-B8C8-7475DF31CE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Karttt", "Karttt\Karttt.csproj", "{22B17C64-7E2B-4831-B8C8-7475DF31CE87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
