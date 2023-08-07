@@ -1,7 +1,11 @@
+using Karttt.Classes;
+using Karttt.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IKartItemGenerator, KartItemGenerator>();
 
 var app = builder.Build();
 
