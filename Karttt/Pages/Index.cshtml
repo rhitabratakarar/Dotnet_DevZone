@@ -8,7 +8,11 @@
 <script defer>
     function addToCart(fromButton) {
         console.log(fromButton.id);
-        new bootstrap.Toast(document.querySelector('.toast')).show();
+        new bootstrap.Toast(document.querySelector('.toast-add')).show();
+    }
+    function RemoveFromCart(fromButton) {
+        console.log(fromButton.id);
+        new bootstrap.Toast(document.querySelector('.toast-remove')).show();
     }
 </script>
 
@@ -20,13 +24,21 @@
     @{
         foreach (IKartItem kartItem in Model.AvailableKartItems)
         {
-
             <div class="card shadow mb-5" style="width: 18rem; border: 0;">
                 <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
                     <h5 class="card-title">@kartItem.Name</h5>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                    <button type="button" class="btn btn-success float-end" onclick="addToCart(this)" id="@(kartItem.Id.ToString() + "_" + kartItem.Id.ToString())">Add to cart</button>
+                    @{
+                        if (kartItem.IsItemAddedToKart)
+                        {
+                            <button type="button" class="btn btn-danger float-end" onclick="RemoveFromCart(this)" id="@(kartItem.Id.ToString() + "_" + kartItem.Id.ToString())">Remove From cart</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-success float-end" onclick="addToCart(this)" id="@(kartItem.Id.ToString() + "_" + kartItem.Id.ToString())">Add to cart</button>
+                        }
+                    }
                 </div>
             </div>
         }
@@ -34,10 +46,19 @@
 </div>
 
 
-<div class="position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
+<div class="toast-add position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
     <div class="d-flex">
         <div class="toast-body">
             Item added to cart.
+        </div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+
+<div class="toast-remove position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
+    <div class="d-flex">
+        <div class="toast-body">
+            Item Removed from cart.
         </div>
         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
