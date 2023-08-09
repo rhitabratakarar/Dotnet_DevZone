@@ -12,14 +12,14 @@ namespace Karttt.Db
         {
             this._generator = generator;
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            for (int i = 0; i < 15; i++)
-            {
-                IKartItem kartItem = this._generator.GetNewItem();
-                modelBuilder.Entity<KartItem>().HasData(kartItem);
-            }
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //    for (int i = 0; i < 15; i++)
+        //    {
+        //        IKartItem kartItem = this._generator.GetNewItem();
+        //        modelBuilder.Entity<KartItem>().HasData(kartItem);
+        //    }
+        //}
     }
 }
