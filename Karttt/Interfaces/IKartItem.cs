@@ -4,5 +4,6 @@
     {
         public Guid Id { get; } 
         public string? Name { get; set; }
+        public bool IsItemAddedToKart { get; set; }
     }
 }
