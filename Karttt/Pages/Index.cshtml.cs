@@ -1,24 +1,34 @@
-﻿using Karttt.Interfaces;
+﻿using Karttt.Db;
+using Karttt.Interfaces;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace Karttt.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly IKartItemGenerator _kartItemGenerator;
-        public IList<IKartItem> GeneratedKartItems { get; set; }
-        public IndexModel(IKartItemGenerator kartItemGenerator)
+        private readonly KartDbContext _dbContext;
+        public IList<IKartItem> AvailableKartItems { get; set; }
+        public IndexModel(KartDbContext dbContext)
         {
-            this._kartItemGenerator = kartItemGenerator;
-            this.GeneratedKartItems = new List<IKartItem>();
+            this._dbContext = dbContext;
+            this.AvailableKartItems = new List<IKartItem>();
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            for (int i = 0; i < 24; i++)
+            this._dbContext.Database.EnsureCreated();
+            this.AvailableKartItems = await this._dbContext.KartItems.ToListAsync<IKartItem>();
+            foreach (IKartItem item in AvailableKartItems)
             {
-                this.GeneratedKartItems.Add(_kartItemGenerator.GetNewItem());
+                Debug.WriteLine(item.Id);
             }
+        }
+
+        public void OnPost()
+        {
+
         }
     }
 }

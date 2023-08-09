@@ -18,7 +18,7 @@
 
 <div class="d-flex flex-wrap justify-content-between">
     @{
-        foreach(IKartItem kartItem in Model.GeneratedKartItems)
+        foreach (IKartItem kartItem in Model.AvailableKartItems)
         {
 
             <div class="card shadow mb-5" style="width: 18rem; border: 0;">
@@ -29,14 +29,16 @@
                     <button type="button" class="btn btn-success float-end" onclick="addToCart(this)" id="@(kartItem.Id.ToString() + "_" + kartItem.Id.ToString())">Add to cart</button>
                 </div>
             </div>
-            <div class="position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
-                <div class="d-flex">
-                    <div class="toast-body">
-                        Item added to cart.
-                    </div>
-                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>
         }
     }
+</div>
+
+
+<div class="position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
+    <div class="d-flex">
+        <div class="toast-body">
+            Item added to cart.
+        </div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
 </div>

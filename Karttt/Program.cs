@@ -1,11 +1,17 @@
 using Karttt.Classes;
+using Karttt.Db;
 using Karttt.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
 builder.Services.AddScoped<IKartItemGenerator, KartItemGenerator>();
+builder.Configuration.AddUserSecrets<Program>();
+string? connString = builder.Configuration.GetConnectionString("KartttDb");
+System.Diagnostics.Debug.WriteLine(connString);
+builder.Services.AddDbContext<KartDbContext>(options => options.UseSqlServer(connString));
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
