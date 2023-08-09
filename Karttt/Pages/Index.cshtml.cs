@@ -20,10 +20,6 @@ namespace Karttt.Pages
         {
             this._dbContext.Database.EnsureCreated();
             this.AvailableKartItems = await this._dbContext.KartItems.ToListAsync<IKartItem>();
-            foreach (IKartItem item in AvailableKartItems)
-            {
-                Debug.WriteLine(item.Id);
-            }
         }
 
         public void OnPost()

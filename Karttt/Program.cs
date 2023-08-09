@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IKartItemGenerator, KartItemGenerator>();
 builder.Configuration.AddUserSecrets<Program>();
 string? connString = builder.Configuration.GetConnectionString("KartttDb");
-System.Diagnostics.Debug.WriteLine(connString);
 builder.Services.AddDbContext<KartDbContext>(options => options.UseSqlServer(connString));
 builder.Services.AddRazorPages();
 
