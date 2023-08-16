@@ -1,5 +1,6 @@
 ﻿using Karttt.Db;
 using Karttt.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -22,9 +23,10 @@ namespace Karttt.Pages
             this.AvailableKartItems = await this._dbContext.KartItems.ToListAsync<IKartItem>();
         }
 
-        public void OnPost()
+        public void OnPostAsync()
         {
-
+            string idOfTheElement = Request.Form["ElementId"]!;
+            Debug.WriteLine("________________________________ " + idOfTheElement + " ___________________________");
         }
     }
 }
