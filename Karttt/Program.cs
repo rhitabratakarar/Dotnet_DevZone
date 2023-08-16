@@ -1,7 +1,29 @@
 using Karttt.Classes;
 using Karttt.Db;
 using Karttt.Interfaces;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+
+static bool CanDatabaseBeConnected(string connectionString)
+{
+    if (connectionString != null || connectionString != "")
+    {
+        try
+        {
+            using SqlConnection conn = new(connectionString);
+            conn.Open();
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +31,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IKartItemGenerator, KartItemGenerator>();
 builder.Configuration.AddUserSecrets<Program>();
 string? connString = builder.Configuration.GetConnectionString("KartttDb");
-builder.Services.AddDbContext<KartDbContext>(options => options.UseSqlServer(connString));
+
+builder.Services.AddDbContext<KartDbContext>(options =>
+{
+    bool canBeConnected = CanDatabaseBeConnected(connString!);
+    if (canBeConnected)
+    {
+        options.UseSqlServer(connString);
+    }
+    else
+    {
+        System.Diagnostics.Debug.WriteLine("Failed to connect to sql server. Falling back to InMemoryDatabase.");
+        options.UseInMemoryDatabase("KartttDb");
+    }
+});
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
