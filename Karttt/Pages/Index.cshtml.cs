@@ -27,15 +27,17 @@ namespace Karttt.Pages
         }
 
         [BindProperty]
-        public KartItem? KartItem {get; set;}
+        public KartItem? KartItem { get; set; }
         public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            Console.WriteLine("_______________________________ The Name is: " + KartItem!.Name + "____________________________________");
-            Console.WriteLine("_______________________________ The Id is: " + KartItem!.Id + "____________________________________");
+            IKartItem? item = await _dbContext.KartItems.FindAsync(KartItem!.Id);
+            if (item != null)
+                item.IsItemAddedToKart = !item.IsItemAddedToKart;
+            await _dbContext.SaveChangesAsync();
             return RedirectToPage("/Index");
         }
     }
