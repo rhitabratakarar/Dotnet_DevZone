@@ -6,7 +6,7 @@ namespace Karttt.Classes
     public class KartItem : IKartItem
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         public string? Name { get; set; }
         public bool IsItemAddedToKart { get; set; } = false;

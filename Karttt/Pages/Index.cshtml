@@ -1,20 +1,10 @@
 ﻿@page
 @using Karttt.Interfaces;
-@model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
+@model IndexModel;
 @{
     ViewData["Title"] = "Home page";
 }
-
-<script defer>
-    function addToCart(fromButton) {
-        console.log(fromButton.id);
-        new bootstrap.Toast(document.querySelector('.toast-add')).show();
-    }
-    function RemoveFromCart(fromButton) {
-        console.log(fromButton.id);
-        new bootstrap.Toast(document.querySelector('.toast-remove')).show();
-    }
-</script>
 
 <div class="mb-5">
     <h1 class="display-4">Welcome!</h1>
@@ -24,8 +14,10 @@
     @{
         foreach (IKartItem kartItem in Model.AvailableKartItems)
         {
-            <form id=@(kartItem.Id + "_" + "form") enctype="application/x-www-form-urlencoded" method="post" onsubmit="return false;">
-                <input class="visually-hidden" id="@kartItem.Id" name="ElementId" value="@kartItem.Id" />
+            <form method="post">
+                <input class="visually-hidden" value="@kartItem.Id" asp-for="KartItem!.Id" />
+                <input class="visually-hidden" value="@kartItem.Name" asp-for="KartItem!.Name" />
+                <input class="visually-hidden" value="@kartItem.IsItemAddedToKart" asp-for="KartItem!.IsItemAddedToKart" />
                 <div class="card shadow mb-5" style="width: 18rem; border: 0;">
                     <div class="card-body">
                         <h5 class="card-title">@kartItem.Name</h5>
@@ -33,11 +25,11 @@
                         @{
                             if (kartItem.IsItemAddedToKart)
                             {
-                                <button type="submit" class="btn btn-danger float-end" onclick="RemoveFromCart(this)" id="@(kartItem.Id.ToString() + "_" + "btn")">Remove From cart</button>
+                                <button type="submit" class="btn btn-danger float-end" id='@(kartItem.Id.ToString() + "_" + "btn")'>Remove From cart</button>
                             }
                             else
                             {
-                                <button type="submit" class="btn btn-success float-end" onclick="addToCart(this)" id="@(kartItem.Id.ToString()  + "_" + "btn")">Add to cart</button>
+                                <button type="submit" class="btn btn-success float-end" id='@(kartItem.Id.ToString()  + "_" + "btn")'>Add to cart</button>
                             }
                         }
                     </div>
@@ -45,23 +37,4 @@
             </form>
         }
     }
-</div>
-
-
-<div class="toast-add position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
-    <div class="d-flex">
-        <div class="toast-body">
-            Item added to cart.
-        </div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-</div>
-
-<div class="toast-remove position-fixed top-0 end-0 mt-2 me-2 toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 999999;">
-    <div class="d-flex">
-        <div class="toast-body">
-            Item Removed from cart.
-        </div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
 </div>

@@ -1,5 +1,8 @@
-﻿using Karttt.Db;
+﻿using Karttt.Classes;
+using Karttt.Db;
 using Karttt.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -16,16 +19,24 @@ namespace Karttt.Pages
             this.AvailableKartItems = new List<IKartItem>();
         }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGet()
         {
             this._dbContext.Database.EnsureCreated();
             this.AvailableKartItems = await this._dbContext.KartItems.ToListAsync<IKartItem>();
+            return Page();
         }
 
-        public void OnPostAsync()
+        [BindProperty]
+        public KartItem? KartItem {get; set;}
+        public async Task<IActionResult> OnPost()
         {
-            string idOfTheElement = Request.Form["ElementId"]!;
-            Debug.WriteLine("________________________________ " + idOfTheElement + " ___________________________");
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            Console.WriteLine("_______________________________ The Name is: " + KartItem!.Name + "____________________________________");
+            Console.WriteLine("_______________________________ The Id is: " + KartItem!.Id + "____________________________________");
+            return RedirectToPage("/Index");
         }
     }
 }
