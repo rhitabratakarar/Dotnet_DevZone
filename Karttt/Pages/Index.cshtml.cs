@@ -1,6 +1,5 @@
 ﻿using Karttt.Db;
 using Karttt.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
