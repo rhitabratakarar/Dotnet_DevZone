@@ -1,4 +1,22 @@
 ﻿@page
 @model Karttt.Pages.CartModel
-@{
-}
+@using Karttt.Interfaces
+@using Karttt.Classes
+
+<div class="d-flex justify-content-between flex-wrap">
+    @{
+        foreach(IKartItem kartItem in Model.KartItems)
+        {
+            <form method="post">
+                <div class="card shadow mb-5" style="width: 18rem; border: 0;">
+                    <div class="card-body">
+                        <input asp-for="KartItem!.Id" class="visually-hidden"/>
+                        <h5 class="card-title">@kartItem.Name</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                        <button type="submit" class="btn btn-danger float-end" id='@(kartItem.Id.ToString() + "_" + "btn")'>Remove From cart</button>
+                    </div>
+                </div>
+            </form>
+        }
+    }
+</div>
