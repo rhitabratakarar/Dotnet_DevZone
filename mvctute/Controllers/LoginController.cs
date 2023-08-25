@@ -1,27 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
+using mvctute.Services;
+using mvctute.DTO;
 
 namespace mvctute.Controllers;
 public class LoginController : Controller
 {
     private readonly ILogger<LoginController> _logger;
-    public LoginController(ILogger<LoginController> logger)
+    private readonly ILoginService _service;
+    public LoginController(ILogger<LoginController> logger, ILoginService service)
     {
         this._logger = logger;
+        this._service = service;
     }
     [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
-    [HttpGet]
-    public IActionResult FirstPage()
-    {
-        mvctute.Models.DataTransferObject dto = new();
-        return View(dto);
-    }
     [HttpPost]
-    public IActionResult FirstPage([FromBody]mvctute.Models.DataTransferObject dto)
+    public IActionResult Index([FromBody] LoginDTO loginDTO)
     {
-        return View(dto);
+        bool isValid = this._service.PerformLogin(loginDTO.Email!, loginDTO.Password!);
+        if(isValid)
+        {
+            return Redirect("/Home/Index");
+        }
+        else
+        {
+            return View();
+        }
     }
 }

@@ -1,7 +1,13 @@
+using mvctute.Interfaces;
+using mvctute.Classes;
+using mvctute.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IDataSource, DataSource>();
+builder.Services.AddSingleton<ILoginService, LoginService>();
 
 var app = builder.Build();
 
