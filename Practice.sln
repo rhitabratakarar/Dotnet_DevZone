@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesApp", "RazorPages
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Karttt", "Karttt\Karttt.csproj", "{22B17C64-7E2B-4831-B8C8-7475DF31CE87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvctute", "mvctute\mvctute.csproj", "{9F8FE3DF-D199-4772-AD69-6A66A898FB10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{22B17C64-7E2B-4831-B8C8-7475DF31CE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22B17C64-7E2B-4831-B8C8-7475DF31CE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22B17C64-7E2B-4831-B8C8-7475DF31CE87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F8FE3DF-D199-4772-AD69-6A66A898FB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8FE3DF-D199-4772-AD69-6A66A898FB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8FE3DF-D199-4772-AD69-6A66A898FB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8FE3DF-D199-4772-AD69-6A66A898FB10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
